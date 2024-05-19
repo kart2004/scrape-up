@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-
+import json 
 from scrape_up.config.request_config import RequestConfig, get
 
 
@@ -88,18 +88,6 @@ class Geeksforgeeks:
                 "campus_ambassader": campus_ambaasder,
             }
 
-            formatted_output = (
-                f"Username: {user_data['username']}\n"
-                f"College Name: {user_data['collage_name']}\n"
-                f"College Rank: {user_data['collage_rank']}\n"
-                f"Overall Coding Score: {user_data['score']['overall_coding_score']}\n"
-                f"Monthly Coding Score: {user_data['score']['monthly_coding_score']}\n"
-                f"Languages Used: {user_data['languages_used']}\n"
-                f"Current POTD Streak: {user_data['current_potd_streak']}\n"
-                f"Total Problems Solved: {user_data['total_problem_solved']}\n"
-                f"Campus Ambassador: {user_data['campus_ambassader']}"
-            )
-
-            return formatted_output
+            return json.dumps(user_data)
         except Exception as e:
             return None
